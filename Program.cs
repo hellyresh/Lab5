@@ -71,7 +71,7 @@ namespace Lab5_Sokolova_Mediator
         }
     }
     /// <summary>
-    /// Класс приглашенной группы (подтанцовка)
+    /// Класс музыкальной группы
     /// </summary>
     class Group : Colleague
     {
@@ -93,7 +93,7 @@ namespace Lab5_Sokolova_Mediator
         }
     }
     /// <summary>
-    /// класс руководителя концертного зала
+    /// Класс руководителя концертного зала
     /// </summary>
     class Headmaster : Colleague
     {
