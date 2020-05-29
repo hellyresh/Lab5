@@ -163,7 +163,7 @@ namespace Lab5_Sokolova_Mediator
             mediator.Headmaster = headmaster;
             singer.Send("Я известный исполнитель и хочу выступать в новом концертном зале");
             group.Send("Мы - молодая группа, хотим устроить у вас концерт");
-            headmaster.Send("В нашем концертном зале места заняты на год вперед.");
+            headmaster.Send("К сожалению, мы вынуждены вам отказать. В нашем концертном зале места заняты на год вперед.");
 
             Console.ReadKey();
         }
