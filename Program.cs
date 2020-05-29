@@ -50,7 +50,7 @@ namespace Lab5_Sokolova_Mediator
     }
 
     /// <summary>
-    /// класс исполнителя
+    /// Класс исполнителя
     /// </summary>
     class Singer : Colleague
     {
@@ -71,15 +71,15 @@ namespace Lab5_Sokolova_Mediator
         }
     }
     /// <summary>
-    /// Класс агента исполнителя
+    /// Класс приглашенной группы (подтанцовка)
     /// </summary>
-    class SingerAgent : Colleague
+    class Group : Colleague
     {
         /// <summary>
         /// Конструктор класса
         /// </summary>
         /// <param name="mediator">посредник для взаимодействия</param>
-        public SingerAgent(Mediator mediator)
+        public Group(Mediator mediator)
             : base(mediator)
         { }
 
@@ -89,7 +89,7 @@ namespace Lab5_Sokolova_Mediator
         /// <param name="message">выводимое сообщение</param>
         public override void Notify(string message)
         {
-            Console.WriteLine("Сообщение агенту исполнителя: " + message);
+            Console.WriteLine("Сообщение группе: " + message);
         }
     }
     /// <summary>
@@ -125,7 +125,7 @@ namespace Lab5_Sokolova_Mediator
         /// <summary>
         /// Конструктор агента исполнителя
         /// </summary>
-        public Colleague SingerAgent;
+        public Colleague Group;
         /// <summary>
         /// Конструктор руководителя концертного зала
         /// </summary>
@@ -138,11 +138,15 @@ namespace Lab5_Sokolova_Mediator
         public override void Send(string msg, Colleague colleague)
         {
             if (Singer == colleague)
-                SingerAgent.Notify(msg);
-            else if (SingerAgent == colleague)
+                Headmaster.Notify(msg);
+            else if (Group == colleague)
                 Headmaster.Notify(msg);
             else if (Headmaster == colleague)
+            {
                 Singer.Notify(msg);
+                Group.Notify(msg);
+            }
+                
         }
     }
 
@@ -152,13 +156,13 @@ namespace Lab5_Sokolova_Mediator
         {
             ManagerMediator mediator = new ManagerMediator();
             Colleague singer = new Singer(mediator);
-            Colleague singerAgent = new SingerAgent(mediator);
+            Colleague group = new Group(mediator);
             Colleague headmaster = new Headmaster(mediator);
             mediator.Singer = singer;
-            mediator.SingerAgent = singerAgent;
+            mediator.Group = group;
             mediator.Headmaster = headmaster;
-            singer.Send("Хочу выступать в новом концертном зале");
-            singerAgent.Send("Исполнитель *** хочет выступать у вас!");
+            singer.Send("Я известный исполнитель и хочу выступать в новом концертном зале");
+            group.Send("Мы - молодая группа, хотим устроить у вас концерт");
             headmaster.Send("В нашем концертном зале места заняты на год вперед.");
 
             Console.ReadKey();
