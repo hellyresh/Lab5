@@ -123,7 +123,7 @@ namespace Lab5_Sokolova_Mediator
         /// </summary>
         public Colleague Singer;
         /// <summary>
-        /// Конструктор агента исполнителя
+        /// Конструктор музыкальной группы
         /// </summary>
         public Colleague Group;
         /// <summary>
